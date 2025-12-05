@@ -13,9 +13,29 @@ Key features:
 - Provides clear clinical recommendations
 - Works on desktop and mobile
 
+## Usage
+
+### Online (Easiest)
+
+Visit: **https://nestordemeure.github.io/abuse_checklist/**
+
+Or scan this QR code:
+
+![QR Code](qr_code_githubpage.png)
+
+### Local Server
+
+If you prefer to run it locally:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000 in your browser.
+
 ## Theory
 
-### The Model
+### Model System & Variables
 
 This tool uses a comprehensive multi-model system with **a separate [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model for every possible combination of variables**.
 
@@ -32,7 +52,7 @@ We use seven clinical variables:
 
 The expected prevalence of abuse in your population (default: 25%, adjustable based on your clinical context) are also taken into account as an additional input.
 
-### How It Works
+### Calculation & Metrics
 
 Probability calculation:
 
@@ -53,25 +73,11 @@ Interpretation thresholds:
 
 Each prediction includes a **95% [confidence interval](https://en.wikipedia.org/wiki/Confidence_interval)** calculated using the **[delta method](https://en.wikipedia.org/wiki/Delta_method)**, accounting for prevalence adjustment and coefficient correlations. Quality warnings alert you when uncertainty is high.
 
-## How to Run
+### The Code
 
-### Online (Easiest)
-
-Visit: **https://nestordemeure.github.io/abuse_checklist/**
-
-Or scan this QR code:
-
-![QR Code](qr_code_githubpage.png)
-
-### Local Server
-
-If you prefer to run it locally:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open http://localhost:8000 in your browser.
+- **`index.html`** - Main web interface (bilingual FR/EN)
+- **`script.js`** - Probability calculation engine with delta method CI
+- **`model.json`** - Precomputed logistic regression models trained on clinical data (coefficients, covariance matrices, metadata)
 
 ## ⚠️ Important Disclaimer
 
