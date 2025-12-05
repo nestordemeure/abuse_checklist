@@ -37,9 +37,11 @@ Then open http://localhost:8000 in your browser.
 
 ### Model System & Variables
 
-This tool uses a comprehensive multi-model system with **a separate [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model for every possible combination of variables**.
+This tool uses a comprehensive multi-model system with **a separate [Firth's penalized logistic regression](https://en.wikipedia.org/wiki/Logistic_regression#Firth's_correction) model for every possible combination of variables**.
 
 When you enter information, the system automatically selects the exact model trained on that specific combination of variables. This ensures accurate probability estimates even when some information is missing.
+
+Firth's method applies penalization to reduce bias in small sample sizes and handle separation problems, making it more reliable than standard logistic regression for clinical data.
 
 We use seven clinical variables:
 1. **Antidepressants** - Currently taking antidepressants
@@ -77,7 +79,7 @@ Each prediction includes a **95% [confidence interval](https://en.wikipedia.org/
 
 - **`index.html`** - Main web interface (bilingual FR/EN)
 - **`script.js`** - Probability calculation engine with delta method CI
-- **`model.json`** - Precomputed logistic regression models trained on clinical data (coefficients, covariance matrices, metadata)
+- **`model.json`** - Precomputed Firth's penalized logistic regression models trained on clinical data (coefficients, covariance matrices, metadata)
 
 ## ⚠️ Important Disclaimer
 

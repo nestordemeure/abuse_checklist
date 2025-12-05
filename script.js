@@ -1,5 +1,5 @@
 // Sexual Abuse Suspicion Score V2 - Web Application
-// Uses subset-specific logistic regression models for accurate probability estimation
+// Uses subset-specific Firth's penalized logistic regression models for accurate probability estimation
 
 let modelData = null;
 let currentLanguage = 'fr';
@@ -437,7 +437,7 @@ function displayResults(result) {
             </div>
 
             <div style="margin-top: 25px; font-size: 0.85em; color: #9ca3af; text-align: center;">
-                ${currentLanguage === 'fr' ? 'Régression logistique' : 'Logistic regression'} • ${currentLanguage === 'fr' ? 'Modèle' : 'Model'} <span style="font-family: monospace;">${result.selectedModel}</span> • AUC: ${result.modelAUC.toFixed(3)} • ${currentLanguage === 'fr' ? 'IC 95%' : '95% CI'}: ±${(result.modelCIWidth * 50).toFixed(1)}% • n=${result.modelNObs}
+                ${currentLanguage === 'fr' ? 'Régression de Firth' : 'Firth regression'} • ${currentLanguage === 'fr' ? 'Modèle' : 'Model'} <span style="font-family: monospace;">${result.selectedModel}</span> • AUC: ${result.modelAUC.toFixed(3)} • ${currentLanguage === 'fr' ? 'IC 95%' : '95% CI'}: ±${(result.modelCIWidth * 50).toFixed(1)}% • n=${result.modelNObs}
             </div>
         </div>
     `;
