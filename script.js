@@ -494,6 +494,24 @@ function debounce(func, wait) {
     };
 }
 
+// Load saved prevalence from localStorage
+function loadSavedPrevalence() {
+    const saved = localStorage.getItem('target_prevalence');
+    if (saved !== null) {
+        const prevalenceInput = document.getElementById('target_prevalence');
+        if (prevalenceInput) {
+            prevalenceInput.value = saved;
+            console.log(`Loaded saved prevalence: ${saved}%`);
+        }
+    }
+}
+
+// Save prevalence to localStorage
+function savePrevalence(value) {
+    localStorage.setItem('target_prevalence', value);
+    console.log(`Saved prevalence: ${value}%`);
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', async function() {
     const loaded = await loadModel();
@@ -501,6 +519,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (!loaded) {
         return;
     }
+
+    // Load saved prevalence value
+    loadSavedPrevalence();
 
     const form = document.getElementById('assessment-form');
     form.addEventListener('submit', handleSubmit);
@@ -535,6 +556,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (prevalenceInput) {
         prevalenceInput.addEventListener('input', debounce(() => {
             console.log(`Prevalence changed: ${prevalenceInput.value}%`);
+            savePrevalence(prevalenceInput.value);
             autoCalculate();
         }, 500));
     }
