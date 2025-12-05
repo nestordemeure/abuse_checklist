@@ -243,6 +243,26 @@
             color: #9ca3af;
             font-size: 0.9em;
         }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            /* Language selector: move above title on mobile */
+            .header {
+                position: static;
+                text-align: center;
+            }
+
+            .language-toggle {
+                position: static;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            /* Make probability 30% smaller on mobile so it fits with uncertainty on same line */
+            .probability-value {
+                font-size: 2.45em; /* 3.5em × 0.7 = 2.45em (30% reduction) */
+            }
+        }
     </style>
 </head>
 <body>
