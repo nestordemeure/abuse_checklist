@@ -1,14 +1,6 @@
 {
-  "model_type": "multiple_firth_regression_with_youden_thresholds",
-  "description": "Multiple Firth's penalized logistic regression models with Youden-optimal thresholds for different variable subsets",
-  "threshold_method": {
-    "name": "Youden's Index",
-    "description_fr": "Chaque modèle utilise un seuil optimal calculé selon l'indice de Youden (maximise sensibilité + spécificité - 1) à 25% de prévalence. Ce seuil est indépendant de la prévalence et optimise l'équilibre entre vrais positifs et vrais négatifs.",
-    "description_en": "Each model uses an optimal threshold calculated using Youden's Index (maximizes sensitivity + specificity - 1) at 25% prevalence. This threshold is prevalence-independent and optimizes the balance between true positives and true negatives.",
-    "reference_prevalence": 0.25,
-    "note_fr": "Les seuils varient selon le modèle (nombre de variables disponibles). Consultez le champ 'youden_threshold' de chaque modèle.",
-    "note_en": "Thresholds vary by model (number of available variables). See the 'youden_threshold' field of each model."
-  },
+  "model_type": "multiple_logistic_regression",
+  "description": "Multiple logistic regression models for different variable subsets",
   "variables": [
     {
       "id": "antidepressants",
@@ -106,11 +98,7 @@
       "auc": 0.749859,
       "converged": true,
       "typical_ci_width": 0.111444,
-      "df_residual": 1,
-      "youden_threshold": 0.12,
-      "youden_sensitivity": 0.612903,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.560272
+      "df_residual": 1
     },
     "depression": {
       "variables": [
@@ -140,11 +128,7 @@
       "auc": 0.661261,
       "converged": true,
       "typical_ci_width": 0.120657,
-      "df_residual": 1,
-      "youden_threshold": 0.12,
-      "youden_sensitivity": 0.765766,
-      "youden_specificity": 0.6,
-      "youden_index": 0.365766
+      "df_residual": 1
     },
     "benzodiazepines": {
       "variables": [
@@ -174,11 +158,7 @@
       "auc": 0.663837,
       "converged": true,
       "typical_ci_width": 0.138482,
-      "df_residual": 1,
-      "youden_threshold": 0.14,
-      "youden_sensitivity": 0.623656,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.41313
+      "df_residual": 1
     },
     "suicide_attempt": {
       "variables": [
@@ -208,11 +188,7 @@
       "auc": 0.538739,
       "converged": true,
       "typical_ci_width": 0.215951,
-      "df_residual": 1,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.234234,
-      "youden_specificity": 0.95,
-      "youden_index": 0.184234
+      "df_residual": 1
     },
     "violence": {
       "variables": [
@@ -242,11 +218,7 @@
       "auc": 0.528829,
       "converged": true,
       "typical_ci_width": 0.276003,
-      "df_residual": 1,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.189189,
-      "youden_specificity": 1,
-      "youden_index": 0.189189
+      "df_residual": 1
     },
     "gynecological": {
       "variables": [
@@ -276,11 +248,7 @@
       "auc": 0.523423,
       "converged": true,
       "typical_ci_width": 0.203647,
-      "df_residual": 1,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.252252,
-      "youden_specificity": 0.95,
-      "youden_index": 0.202252
+      "df_residual": 1
     },
     "work_disability_months": {
       "variables": [
@@ -310,11 +278,7 @@
       "auc": 0.775472,
       "converged": true,
       "typical_ci_width": 0.146178,
-      "df_residual": 1,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.764151,
-      "youden_specificity": 0.65,
-      "youden_index": 0.414151
+      "df_residual": 1
     },
     "antidepressants_depression": {
       "variables": ["antidepressants", "depression"],
@@ -351,11 +315,7 @@
       "auc": 0.826087,
       "converged": true,
       "typical_ci_width": 0.088144,
-      "df_residual": 2,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.619565,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.566934
+      "df_residual": 2
     },
     "antidepressants_benzodiazepines": {
       "variables": ["antidepressants", "benzodiazepines"],
@@ -392,11 +352,7 @@
       "auc": 0.814941,
       "converged": true,
       "typical_ci_width": 0.084027,
-      "df_residual": 2,
-      "youden_threshold": 0.23,
-      "youden_sensitivity": 0.612903,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.560272
+      "df_residual": 2
     },
     "antidepressants_suicide_attempt": {
       "variables": ["antidepressants", "suicide_attempt"],
@@ -433,11 +389,7 @@
       "auc": 0.808352,
       "converged": true,
       "typical_ci_width": 0.068693,
-      "df_residual": 2,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.717391,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.612128
+      "df_residual": 2
     },
     "antidepressants_violence": {
       "variables": ["antidepressants", "violence"],
@@ -474,11 +426,7 @@
       "auc": 0.800343,
       "converged": true,
       "typical_ci_width": 0.087924,
-      "df_residual": 2,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.684783,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.632151
+      "df_residual": 2
     },
     "antidepressants_gynecological": {
       "variables": ["antidepressants", "gynecological"],
@@ -515,11 +463,7 @@
       "auc": 0.790046,
       "converged": true,
       "typical_ci_width": 0.061543,
-      "df_residual": 2,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.728261,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.622998
+      "df_residual": 2
     },
     "antidepressants_work_disability_months": {
       "variables": ["antidepressants", "work_disability_months"],
@@ -556,11 +500,7 @@
       "auc": 0.885057,
       "converged": true,
       "typical_ci_width": 0.12639,
-      "df_residual": 2,
-      "youden_threshold": 0.15,
-      "youden_sensitivity": 0.793103,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.68784
+      "df_residual": 2
     },
     "depression_benzodiazepines": {
       "variables": ["depression", "benzodiazepines"],
@@ -597,11 +537,7 @@
       "auc": 0.73913,
       "converged": true,
       "typical_ci_width": 0.121344,
-      "df_residual": 2,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.630435,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.419908
+      "df_residual": 2
     },
     "depression_suicide_attempt": {
       "variables": ["depression", "suicide_attempt"],
@@ -638,11 +574,7 @@
       "auc": 0.690541,
       "converged": true,
       "typical_ci_width": 0.180411,
-      "df_residual": 2,
-      "youden_threshold": 0.11,
-      "youden_sensitivity": 0.792793,
-      "youden_specificity": 0.6,
-      "youden_index": 0.392793
+      "df_residual": 2
     },
     "depression_violence": {
       "variables": ["depression", "violence"],
@@ -679,11 +611,7 @@
       "auc": 0.731982,
       "converged": true,
       "typical_ci_width": 0.1455,
-      "df_residual": 2,
-      "youden_threshold": 0.09,
-      "youden_sensitivity": 0.828829,
-      "youden_specificity": 0.6,
-      "youden_index": 0.428829
+      "df_residual": 2
     },
     "depression_gynecological": {
       "variables": ["depression", "gynecological"],
@@ -720,11 +648,7 @@
       "auc": 0.704955,
       "converged": true,
       "typical_ci_width": 0.136736,
-      "df_residual": 2,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.81982,
-      "youden_specificity": 0.55,
-      "youden_index": 0.36982
+      "df_residual": 2
     },
     "depression_work_disability_months": {
       "variables": ["depression", "work_disability_months"],
@@ -761,11 +685,7 @@
       "auc": 0.799038,
       "converged": true,
       "typical_ci_width": 0.144104,
-      "df_residual": 2,
-      "youden_threshold": 0.19,
-      "youden_sensitivity": 0.778846,
-      "youden_specificity": 0.7,
-      "youden_index": 0.478846
+      "df_residual": 2
     },
     "benzodiazepines_suicide_attempt": {
       "variables": ["benzodiazepines", "suicide_attempt"],
@@ -802,11 +722,7 @@
       "auc": 0.715675,
       "converged": true,
       "typical_ci_width": 0.146889,
-      "df_residual": 2,
-      "youden_threshold": 0.12,
-      "youden_sensitivity": 0.706522,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.443364
+      "df_residual": 2
     },
     "benzodiazepines_violence": {
       "variables": ["benzodiazepines", "violence"],
@@ -843,11 +759,7 @@
       "auc": 0.738558,
       "converged": true,
       "typical_ci_width": 0.145969,
-      "df_residual": 2,
-      "youden_threshold": 0.11,
-      "youden_sensitivity": 0.706522,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.495995
+      "df_residual": 2
     },
     "benzodiazepines_gynecological": {
       "variables": ["benzodiazepines", "gynecological"],
@@ -884,11 +796,7 @@
       "auc": 0.694508,
       "converged": true,
       "typical_ci_width": 0.163449,
-      "df_residual": 2,
-      "youden_threshold": 0.12,
-      "youden_sensitivity": 0.695652,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.485126
+      "df_residual": 2
     },
     "benzodiazepines_work_disability_months": {
       "variables": ["benzodiazepines", "work_disability_months"],
@@ -925,11 +833,7 @@
       "auc": 0.819722,
       "converged": true,
       "typical_ci_width": 0.162518,
-      "df_residual": 2,
-      "youden_threshold": 0.25,
-      "youden_sensitivity": 0.712644,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.502117
+      "df_residual": 2
     },
     "suicide_attempt_violence": {
       "variables": ["suicide_attempt", "violence"],
@@ -966,11 +870,7 @@
       "auc": 0.632883,
       "converged": true,
       "typical_ci_width": 0.130067,
-      "df_residual": 2,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.396396,
-      "youden_specificity": 0.95,
-      "youden_index": 0.346396
+      "df_residual": 2
     },
     "suicide_attempt_gynecological": {
       "variables": ["suicide_attempt", "gynecological"],
@@ -1007,11 +907,7 @@
       "auc": 0.601351,
       "converged": true,
       "typical_ci_width": 0.136855,
-      "df_residual": 2,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.423423,
-      "youden_specificity": 0.9,
-      "youden_index": 0.323423
+      "df_residual": 2
     },
     "suicide_attempt_work_disability_months": {
       "variables": ["suicide_attempt", "work_disability_months"],
@@ -1048,11 +944,7 @@
       "auc": 0.803846,
       "converged": true,
       "typical_ci_width": 0.224716,
-      "df_residual": 2,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.615385,
-      "youden_specificity": 0.85,
-      "youden_index": 0.465385
+      "df_residual": 2
     },
     "violence_gynecological": {
       "variables": ["violence", "gynecological"],
@@ -1089,11 +981,7 @@
       "auc": 0.60991,
       "converged": true,
       "typical_ci_width": 0.118578,
-      "df_residual": 2,
-      "youden_threshold": 0.17,
-      "youden_sensitivity": 0.414414,
-      "youden_specificity": 0.95,
-      "youden_index": 0.364414
+      "df_residual": 2
     },
     "violence_work_disability_months": {
       "variables": ["violence", "work_disability_months"],
@@ -1130,11 +1018,7 @@
       "auc": 0.821635,
       "converged": true,
       "typical_ci_width": 0.277631,
-      "df_residual": 2,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.586538,
-      "youden_specificity": 0.9,
-      "youden_index": 0.486538
+      "df_residual": 2
     },
     "gynecological_work_disability_months": {
       "variables": ["gynecological", "work_disability_months"],
@@ -1171,11 +1055,7 @@
       "auc": 0.803365,
       "converged": true,
       "typical_ci_width": 0.221902,
-      "df_residual": 2,
-      "youden_threshold": 0.13,
-      "youden_sensitivity": 0.836538,
-      "youden_specificity": 0.65,
-      "youden_index": 0.486538
+      "df_residual": 2
     },
     "antidepressants_depression_benzodiazepines": {
       "variables": ["antidepressants", "depression", "benzodiazepines"],
@@ -1223,11 +1103,7 @@
       "auc": 0.856407,
       "converged": true,
       "typical_ci_width": 0.06536,
-      "df_residual": 3,
-      "youden_threshold": 0.14,
-      "youden_sensitivity": 0.728261,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.570366
+      "df_residual": 3
     },
     "antidepressants_depression_suicide_attempt": {
       "variables": ["antidepressants", "depression", "suicide_attempt"],
@@ -1275,11 +1151,7 @@
       "auc": 0.856407,
       "converged": true,
       "typical_ci_width": 0.058323,
-      "df_residual": 3,
-      "youden_threshold": 0.14,
-      "youden_sensitivity": 0.717391,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.612128
+      "df_residual": 3
     },
     "antidepressants_depression_violence": {
       "variables": ["antidepressants", "depression", "violence"],
@@ -1327,11 +1199,7 @@
       "auc": 0.857551,
       "converged": true,
       "typical_ci_width": 0.067391,
-      "df_residual": 3,
-      "youden_threshold": 0.15,
-      "youden_sensitivity": 0.684783,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.632151
+      "df_residual": 3
     },
     "antidepressants_depression_gynecological": {
       "variables": ["antidepressants", "depression", "gynecological"],
@@ -1379,11 +1247,7 @@
       "auc": 0.857551,
       "converged": true,
       "typical_ci_width": 0.037107,
-      "df_residual": 3,
-      "youden_threshold": 0.15,
-      "youden_sensitivity": 0.728261,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.622998
+      "df_residual": 3
     },
     "antidepressants_depression_work_disability_months": {
       "variables": ["antidepressants", "depression", "work_disability_months"],
@@ -1431,11 +1295,7 @@
       "auc": 0.891677,
       "converged": true,
       "typical_ci_width": 0.108842,
-      "df_residual": 3,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.77907,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.673807
+      "df_residual": 3
     },
     "antidepressants_benzodiazepines_suicide_attempt": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt"],
@@ -1483,11 +1343,7 @@
       "auc": 0.853547,
       "converged": true,
       "typical_ci_width": 0.04787,
-      "df_residual": 3,
-      "youden_threshold": 0.19,
-      "youden_sensitivity": 0.717391,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.612128
+      "df_residual": 3
     },
     "antidepressants_benzodiazepines_violence": {
       "variables": ["antidepressants", "benzodiazepines", "violence"],
@@ -1535,11 +1391,7 @@
       "auc": 0.856407,
       "converged": true,
       "typical_ci_width": 0.053984,
-      "df_residual": 3,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.684783,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.632151
+      "df_residual": 3
     },
     "antidepressants_benzodiazepines_gynecological": {
       "variables": ["antidepressants", "benzodiazepines", "gynecological"],
@@ -1587,11 +1439,7 @@
       "auc": 0.838101,
       "converged": true,
       "typical_ci_width": 0.065947,
-      "df_residual": 3,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.728261,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.622998
+      "df_residual": 3
     },
     "antidepressants_benzodiazepines_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "work_disability_months"],
@@ -1639,11 +1487,7 @@
       "auc": 0.886872,
       "converged": true,
       "typical_ci_width": 0.101715,
-      "df_residual": 3,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.827586,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.722323
+      "df_residual": 3
     },
     "antidepressants_suicide_attempt_violence": {
       "variables": ["antidepressants", "suicide_attempt", "violence"],
@@ -1691,11 +1535,7 @@
       "auc": 0.848398,
       "converged": true,
       "typical_ci_width": 0.034681,
-      "df_residual": 3,
-      "youden_threshold": 0.08,
-      "youden_sensitivity": 0.771739,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.666476
+      "df_residual": 3
     },
     "antidepressants_suicide_attempt_gynecological": {
       "variables": ["antidepressants", "suicide_attempt", "gynecological"],
@@ -1743,11 +1583,7 @@
       "auc": 0.828375,
       "converged": true,
       "typical_ci_width": 0.034023,
-      "df_residual": 3,
-      "youden_threshold": 0.08,
-      "youden_sensitivity": 0.793478,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.635584
+      "df_residual": 3
     },
     "antidepressants_suicide_attempt_work_disability_months": {
       "variables": ["antidepressants", "suicide_attempt", "work_disability_months"],
@@ -1795,11 +1631,7 @@
       "auc": 0.894737,
       "converged": true,
       "typical_ci_width": 0.094458,
-      "df_residual": 3,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.790698,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.738066
+      "df_residual": 3
     },
     "antidepressants_violence_gynecological": {
       "variables": ["antidepressants", "violence", "gynecological"],
@@ -1847,11 +1679,7 @@
       "auc": 0.829519,
       "converged": true,
       "typical_ci_width": 0.029715,
-      "df_residual": 3,
-      "youden_threshold": 0.08,
-      "youden_sensitivity": 0.782609,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.677346
+      "df_residual": 3
     },
     "antidepressants_violence_work_disability_months": {
       "variables": ["antidepressants", "violence", "work_disability_months"],
@@ -1899,11 +1727,7 @@
       "auc": 0.908813,
       "converged": true,
       "typical_ci_width": 0.112451,
-      "df_residual": 3,
-      "youden_threshold": 0.13,
-      "youden_sensitivity": 0.837209,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.731946
+      "df_residual": 3
     },
     "antidepressants_gynecological_work_disability_months": {
       "variables": ["antidepressants", "gynecological", "work_disability_months"],
@@ -1951,11 +1775,7 @@
       "auc": 0.903917,
       "converged": true,
       "typical_ci_width": 0.06485,
-      "df_residual": 3,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.77907,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.726438
+      "df_residual": 3
     },
     "depression_benzodiazepines_suicide_attempt": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt"],
@@ -2003,11 +1823,7 @@
       "auc": 0.765446,
       "converged": true,
       "typical_ci_width": 0.138001,
-      "df_residual": 3,
-      "youden_threshold": 0.17,
-      "youden_sensitivity": 0.706522,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.443364
+      "df_residual": 3
     },
     "depression_benzodiazepines_violence": {
       "variables": ["depression", "benzodiazepines", "violence"],
@@ -2055,11 +1871,7 @@
       "auc": 0.800343,
       "converged": true,
       "typical_ci_width": 0.087545,
-      "df_residual": 3,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.706522,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.495995
+      "df_residual": 3
     },
     "depression_benzodiazepines_gynecological": {
       "variables": ["depression", "benzodiazepines", "gynecological"],
@@ -2107,11 +1919,7 @@
       "auc": 0.74714,
       "converged": true,
       "typical_ci_width": 0.140052,
-      "df_residual": 3,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.695652,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.485126
+      "df_residual": 3
     },
     "depression_benzodiazepines_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "work_disability_months"],
@@ -2159,11 +1967,7 @@
       "auc": 0.826805,
       "converged": true,
       "typical_ci_width": 0.154626,
-      "df_residual": 3,
-      "youden_threshold": 0.32,
-      "youden_sensitivity": 0.604651,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.55202
+      "df_residual": 3
     },
     "depression_suicide_attempt_violence": {
       "variables": ["depression", "suicide_attempt", "violence"],
@@ -2211,11 +2015,7 @@
       "auc": 0.759009,
       "converged": true,
       "typical_ci_width": 0.094557,
-      "df_residual": 3,
-      "youden_threshold": 0.09,
-      "youden_sensitivity": 0.846847,
-      "youden_specificity": 0.6,
-      "youden_index": 0.446847
+      "df_residual": 3
     },
     "depression_suicide_attempt_gynecological": {
       "variables": ["depression", "suicide_attempt", "gynecological"],
@@ -2263,11 +2063,7 @@
       "auc": 0.726126,
       "converged": true,
       "typical_ci_width": 0.122473,
-      "df_residual": 3,
-      "youden_threshold": 0.09,
-      "youden_sensitivity": 0.828829,
-      "youden_specificity": 0.55,
-      "youden_index": 0.378829
+      "df_residual": 3
     },
     "depression_suicide_attempt_work_disability_months": {
       "variables": ["depression", "suicide_attempt", "work_disability_months"],
@@ -2315,11 +2111,7 @@
       "auc": 0.816346,
       "converged": true,
       "typical_ci_width": 0.210409,
-      "df_residual": 3,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.807692,
-      "youden_specificity": 0.7,
-      "youden_index": 0.507692
+      "df_residual": 3
     },
     "depression_violence_gynecological": {
       "variables": ["depression", "violence", "gynecological"],
@@ -2367,11 +2159,7 @@
       "auc": 0.768468,
       "converged": true,
       "typical_ci_width": 0.067664,
-      "df_residual": 3,
-      "youden_threshold": 0.26,
-      "youden_sensitivity": 0.828829,
-      "youden_specificity": 0.6,
-      "youden_index": 0.428829
+      "df_residual": 3
     },
     "depression_violence_work_disability_months": {
       "variables": ["depression", "violence", "work_disability_months"],
@@ -2419,11 +2207,7 @@
       "auc": 0.840385,
       "converged": true,
       "typical_ci_width": 0.14735,
-      "df_residual": 3,
-      "youden_threshold": 0.17,
-      "youden_sensitivity": 0.826923,
-      "youden_specificity": 0.7,
-      "youden_index": 0.526923
+      "df_residual": 3
     },
     "depression_gynecological_work_disability_months": {
       "variables": ["depression", "gynecological", "work_disability_months"],
@@ -2471,11 +2255,7 @@
       "auc": 0.817308,
       "converged": true,
       "typical_ci_width": 0.168983,
-      "df_residual": 3,
-      "youden_threshold": 0.37,
-      "youden_sensitivity": 0.538462,
-      "youden_specificity": 0.95,
-      "youden_index": 0.488462
+      "df_residual": 3
     },
     "benzodiazepines_suicide_attempt_violence": {
       "variables": ["benzodiazepines", "suicide_attempt", "violence"],
@@ -2523,11 +2303,7 @@
       "auc": 0.780892,
       "converged": true,
       "typical_ci_width": 0.075053,
-      "df_residual": 3,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.771739,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.508581
+      "df_residual": 3
     },
     "benzodiazepines_suicide_attempt_gynecological": {
       "variables": ["benzodiazepines", "suicide_attempt", "gynecological"],
@@ -2575,11 +2351,7 @@
       "auc": 0.732838,
       "converged": true,
       "typical_ci_width": 0.124125,
-      "df_residual": 3,
-      "youden_threshold": 0.11,
-      "youden_sensitivity": 0.75,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.486842
+      "df_residual": 3
     },
     "benzodiazepines_suicide_attempt_work_disability_months": {
       "variables": ["benzodiazepines", "suicide_attempt", "work_disability_months"],
@@ -2627,11 +2399,7 @@
       "auc": 0.838433,
       "converged": true,
       "typical_ci_width": 0.179112,
-      "df_residual": 3,
-      "youden_threshold": 0.33,
-      "youden_sensitivity": 0.604651,
-      "youden_specificity": 1,
-      "youden_index": 0.604651
+      "df_residual": 3
     },
     "benzodiazepines_violence_gynecological": {
       "variables": ["benzodiazepines", "violence", "gynecological"],
@@ -2679,11 +2447,7 @@
       "auc": 0.758581,
       "converged": true,
       "typical_ci_width": 0.089609,
-      "df_residual": 3,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.76087,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.550343
+      "df_residual": 3
     },
     "benzodiazepines_violence_work_disability_months": {
       "variables": ["benzodiazepines", "violence", "work_disability_months"],
@@ -2731,11 +2495,7 @@
       "auc": 0.862301,
       "converged": true,
       "typical_ci_width": 0.158032,
-      "df_residual": 3,
-      "youden_threshold": 0.35,
-      "youden_sensitivity": 0.593023,
-      "youden_specificity": 1,
-      "youden_index": 0.593023
+      "df_residual": 3
     },
     "benzodiazepines_gynecological_work_disability_months": {
       "variables": ["benzodiazepines", "gynecological", "work_disability_months"],
@@ -2783,11 +2543,7 @@
       "auc": 0.831701,
       "converged": true,
       "typical_ci_width": 0.212532,
-      "df_residual": 3,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.686047,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.528152
+      "df_residual": 3
     },
     "suicide_attempt_violence_gynecological": {
       "variables": ["suicide_attempt", "violence", "gynecological"],
@@ -2835,11 +2591,7 @@
       "auc": 0.69009,
       "converged": true,
       "typical_ci_width": 0.045523,
-      "df_residual": 3,
-      "youden_threshold": 0.14,
-      "youden_sensitivity": 0.567568,
-      "youden_specificity": 0.9,
-      "youden_index": 0.467568
+      "df_residual": 3
     },
     "suicide_attempt_violence_work_disability_months": {
       "variables": ["suicide_attempt", "violence", "work_disability_months"],
@@ -2887,11 +2639,7 @@
       "auc": 0.846154,
       "converged": true,
       "typical_ci_width": 0.12365,
-      "df_residual": 3,
-      "youden_threshold": 0.23,
-      "youden_sensitivity": 0.701923,
-      "youden_specificity": 0.85,
-      "youden_index": 0.551923
+      "df_residual": 3
     },
     "suicide_attempt_gynecological_work_disability_months": {
       "variables": ["suicide_attempt", "gynecological", "work_disability_months"],
@@ -2939,11 +2687,7 @@
       "auc": 0.821154,
       "converged": true,
       "typical_ci_width": 0.151741,
-      "df_residual": 3,
-      "youden_threshold": 0.23,
-      "youden_sensitivity": 0.711538,
-      "youden_specificity": 0.8,
-      "youden_index": 0.511538
+      "df_residual": 3
     },
     "violence_gynecological_work_disability_months": {
       "variables": ["violence", "gynecological", "work_disability_months"],
@@ -2991,11 +2735,7 @@
       "auc": 0.847596,
       "converged": true,
       "typical_ci_width": 0.130268,
-      "df_residual": 3,
-      "youden_threshold": 0.22,
-      "youden_sensitivity": 0.692308,
-      "youden_specificity": 0.85,
-      "youden_index": 0.542308
+      "df_residual": 3
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt"],
@@ -3056,11 +2796,7 @@
       "auc": 0.877574,
       "converged": true,
       "typical_ci_width": 0.03994,
-      "df_residual": 4,
-      "youden_threshold": 0.31,
-      "youden_sensitivity": 0.663043,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.610412
+      "df_residual": 4
     },
     "antidepressants_depression_benzodiazepines_violence": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "violence"],
@@ -3121,11 +2857,7 @@
       "auc": 0.887872,
       "converged": true,
       "typical_ci_width": 0.03589,
-      "df_residual": 4,
-      "youden_threshold": 0.3,
-      "youden_sensitivity": 0.684783,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.632151
+      "df_residual": 4
     },
     "antidepressants_depression_benzodiazepines_gynecological": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "gynecological"],
@@ -3186,11 +2918,7 @@
       "auc": 0.870709,
       "converged": true,
       "typical_ci_width": 0.042171,
-      "df_residual": 4,
-      "youden_threshold": 0.27,
-      "youden_sensitivity": 0.673913,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.621281
+      "df_residual": 4
     },
     "antidepressants_depression_benzodiazepines_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "work_disability_months"],
@@ -3251,11 +2979,7 @@
       "auc": 0.900857,
       "converged": true,
       "typical_ci_width": 0.087625,
-      "df_residual": 4,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.825581,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.720318
+      "df_residual": 4
     },
     "antidepressants_depression_suicide_attempt_violence": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "violence"],
@@ -3316,11 +3040,7 @@
       "auc": 0.882723,
       "converged": true,
       "typical_ci_width": 0.033353,
-      "df_residual": 4,
-      "youden_threshold": 0.12,
-      "youden_sensitivity": 0.771739,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.666476
+      "df_residual": 4
     },
     "antidepressants_depression_suicide_attempt_gynecological": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "gynecological"],
@@ -3381,11 +3101,7 @@
       "auc": 0.87357,
       "converged": true,
       "typical_ci_width": 0.025093,
-      "df_residual": 4,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.75,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.644737
+      "df_residual": 4
     },
     "antidepressants_depression_suicide_attempt_work_disability_months": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "work_disability_months"],
@@ -3446,11 +3162,7 @@
       "auc": 0.900857,
       "converged": true,
       "typical_ci_width": 0.086957,
-      "df_residual": 4,
-      "youden_threshold": 0.29,
-      "youden_sensitivity": 0.732558,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.679927
+      "df_residual": 4
     },
     "antidepressants_depression_violence_gynecological": {
       "variables": ["antidepressants", "depression", "violence", "gynecological"],
@@ -3511,11 +3223,7 @@
       "auc": 0.883867,
       "converged": true,
       "typical_ci_width": 0.019327,
-      "df_residual": 4,
-      "youden_threshold": 0.22,
-      "youden_sensitivity": 0.73913,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.686499
+      "df_residual": 4
     },
     "antidepressants_depression_violence_work_disability_months": {
       "variables": ["antidepressants", "depression", "violence", "work_disability_months"],
@@ -3576,11 +3284,7 @@
       "auc": 0.908201,
       "converged": true,
       "typical_ci_width": 0.09017,
-      "df_residual": 4,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.813953,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.70869
+      "df_residual": 4
     },
     "antidepressants_depression_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "gynecological", "work_disability_months"],
@@ -3641,11 +3345,7 @@
       "auc": 0.908813,
       "converged": true,
       "typical_ci_width": 0.049923,
-      "df_residual": 4,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.790698,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.738066
+      "df_residual": 4
     },
     "antidepressants_benzodiazepines_suicide_attempt_violence": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "violence"],
@@ -3706,11 +3406,7 @@
       "auc": 0.886156,
       "converged": true,
       "typical_ci_width": 0.021467,
-      "df_residual": 4,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.728261,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.675629
+      "df_residual": 4
     },
     "antidepressants_benzodiazepines_suicide_attempt_gynecological": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "gynecological"],
@@ -3771,11 +3467,7 @@
       "auc": 0.863272,
       "converged": true,
       "typical_ci_width": 0.036704,
-      "df_residual": 4,
-      "youden_threshold": 0.14,
-      "youden_sensitivity": 0.793478,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.635584
+      "df_residual": 4
     },
     "antidepressants_benzodiazepines_suicide_attempt_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "work_disability_months"],
@@ -3836,11 +3528,7 @@
       "auc": 0.902693,
       "converged": true,
       "typical_ci_width": 0.067728,
-      "df_residual": 4,
-      "youden_threshold": 0.17,
-      "youden_sensitivity": 0.837209,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.784578
+      "df_residual": 4
     },
     "antidepressants_benzodiazepines_violence_gynecological": {
       "variables": ["antidepressants", "benzodiazepines", "violence", "gynecological"],
@@ -3901,11 +3589,7 @@
       "auc": 0.867277,
       "converged": true,
       "typical_ci_width": 0.03445,
-      "df_residual": 4,
-      "youden_threshold": 0.14,
-      "youden_sensitivity": 0.782609,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.677346
+      "df_residual": 4
     },
     "antidepressants_benzodiazepines_violence_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "violence", "work_disability_months"],
@@ -3966,11 +3650,7 @@
       "auc": 0.911873,
       "converged": true,
       "typical_ci_width": 0.071747,
-      "df_residual": 4,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.825581,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.77295
+      "df_residual": 4
     },
     "antidepressants_benzodiazepines_gynecological_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "gynecological", "work_disability_months"],
@@ -4031,11 +3711,7 @@
       "auc": 0.899021,
       "converged": true,
       "typical_ci_width": 0.073727,
-      "df_residual": 4,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.837209,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.731946
+      "df_residual": 4
     },
     "antidepressants_suicide_attempt_violence_gynecological": {
       "variables": ["antidepressants", "suicide_attempt", "violence", "gynecological"],
@@ -4096,11 +3772,7 @@
       "auc": 0.871281,
       "converged": true,
       "typical_ci_width": 0.009274,
-      "df_residual": 4,
-      "youden_threshold": 0.06,
-      "youden_sensitivity": 0.847826,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.689931
+      "df_residual": 4
     },
     "antidepressants_suicide_attempt_violence_work_disability_months": {
       "variables": ["antidepressants", "suicide_attempt", "violence", "work_disability_months"],
@@ -4161,11 +3833,7 @@
       "auc": 0.918605,
       "converged": true,
       "typical_ci_width": 0.051587,
-      "df_residual": 4,
-      "youden_threshold": 0.22,
-      "youden_sensitivity": 0.825581,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.77295
+      "df_residual": 4
     },
     "antidepressants_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["antidepressants", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -4226,11 +3894,7 @@
       "auc": 0.914321,
       "converged": true,
       "typical_ci_width": 0.034927,
-      "df_residual": 4,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.872093,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.76683
+      "df_residual": 4
     },
     "antidepressants_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "violence", "gynecological", "work_disability_months"],
@@ -4291,11 +3955,7 @@
       "auc": 0.926561,
       "converged": true,
       "typical_ci_width": 0.030226,
-      "df_residual": 4,
-      "youden_threshold": 0.27,
-      "youden_sensitivity": 0.813953,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.761322
+      "df_residual": 4
     },
     "depression_benzodiazepines_suicide_attempt_violence": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "violence"],
@@ -4356,11 +4016,7 @@
       "auc": 0.827231,
       "converged": true,
       "typical_ci_width": 0.058222,
-      "df_residual": 4,
-      "youden_threshold": 0.22,
-      "youden_sensitivity": 0.663043,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.505149
+      "df_residual": 4
     },
     "depression_benzodiazepines_suicide_attempt_gynecological": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "gynecological"],
@@ -4421,11 +4077,7 @@
       "auc": 0.768879,
       "converged": true,
       "typical_ci_width": 0.123023,
-      "df_residual": 4,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.75,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.486842
+      "df_residual": 4
     },
     "depression_benzodiazepines_suicide_attempt_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "work_disability_months"],
@@ -4486,11 +4138,7 @@
       "auc": 0.842105,
       "converged": true,
       "typical_ci_width": 0.178173,
-      "df_residual": 4,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.651163,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.598531
+      "df_residual": 4
     },
     "depression_benzodiazepines_violence_gynecological": {
       "variables": ["depression", "benzodiazepines", "violence", "gynecological"],
@@ -4551,11 +4199,7 @@
       "auc": 0.820366,
       "converged": true,
       "typical_ci_width": 0.063298,
-      "df_residual": 4,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.76087,
-      "youden_specificity": 0.789474,
-      "youden_index": 0.550343
+      "df_residual": 4
     },
     "depression_benzodiazepines_violence_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "violence", "work_disability_months"],
@@ -4616,11 +4260,7 @@
       "auc": 0.868421,
       "converged": true,
       "typical_ci_width": 0.109822,
-      "df_residual": 4,
-      "youden_threshold": 0.29,
-      "youden_sensitivity": 0.697674,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.645043
+      "df_residual": 4
     },
     "depression_benzodiazepines_gynecological_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "gynecological", "work_disability_months"],
@@ -4681,11 +4321,7 @@
       "auc": 0.835373,
       "converged": true,
       "typical_ci_width": 0.191033,
-      "df_residual": 4,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.662791,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.557528
+      "df_residual": 4
     },
     "depression_suicide_attempt_violence_gynecological": {
       "variables": ["depression", "suicide_attempt", "violence", "gynecological"],
@@ -4746,11 +4382,7 @@
       "auc": 0.790991,
       "converged": true,
       "typical_ci_width": 0.042174,
-      "df_residual": 4,
-      "youden_threshold": 0.25,
-      "youden_sensitivity": 0.531532,
-      "youden_specificity": 0.95,
-      "youden_index": 0.481532
+      "df_residual": 4
     },
     "depression_suicide_attempt_violence_work_disability_months": {
       "variables": ["depression", "suicide_attempt", "violence", "work_disability_months"],
@@ -4811,11 +4443,7 @@
       "auc": 0.859135,
       "converged": true,
       "typical_ci_width": 0.092774,
-      "df_residual": 4,
-      "youden_threshold": 0.13,
-      "youden_sensitivity": 0.865385,
-      "youden_specificity": 0.7,
-      "youden_index": 0.565385
+      "df_residual": 4
     },
     "depression_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["depression", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -4876,11 +4504,7 @@
       "auc": 0.835577,
       "converged": true,
       "typical_ci_width": 0.148319,
-      "df_residual": 4,
-      "youden_threshold": 0.35,
-      "youden_sensitivity": 0.576923,
-      "youden_specificity": 0.95,
-      "youden_index": 0.526923
+      "df_residual": 4
     },
     "depression_violence_gynecological_work_disability_months": {
       "variables": ["depression", "violence", "gynecological", "work_disability_months"],
@@ -4941,11 +4565,7 @@
       "auc": 0.857212,
       "converged": true,
       "typical_ci_width": 0.073177,
-      "df_residual": 4,
-      "youden_threshold": 0.33,
-      "youden_sensitivity": 0.634615,
-      "youden_specificity": 0.95,
-      "youden_index": 0.584615
+      "df_residual": 4
     },
     "benzodiazepines_suicide_attempt_violence_gynecological": {
       "variables": ["benzodiazepines", "suicide_attempt", "violence", "gynecological"],
@@ -5006,11 +4626,7 @@
       "auc": 0.795767,
       "converged": true,
       "typical_ci_width": 0.04142,
-      "df_residual": 4,
-      "youden_threshold": 0.09,
-      "youden_sensitivity": 0.815217,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.552059
+      "df_residual": 4
     },
     "benzodiazepines_suicide_attempt_violence_work_disability_months": {
       "variables": ["benzodiazepines", "suicide_attempt", "violence", "work_disability_months"],
@@ -5071,11 +4687,7 @@
       "auc": 0.882497,
       "converged": true,
       "typical_ci_width": 0.075211,
-      "df_residual": 4,
-      "youden_threshold": 0.28,
-      "youden_sensitivity": 0.709302,
-      "youden_specificity": 1,
-      "youden_index": 0.709302
+      "df_residual": 4
     },
     "benzodiazepines_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["benzodiazepines", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -5136,11 +4748,7 @@
       "auc": 0.846389,
       "converged": true,
       "typical_ci_width": 0.165679,
-      "df_residual": 4,
-      "youden_threshold": 0.3,
-      "youden_sensitivity": 0.639535,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.586903
+      "df_residual": 4
     },
     "benzodiazepines_violence_gynecological_work_disability_months": {
       "variables": ["benzodiazepines", "violence", "gynecological", "work_disability_months"],
@@ -5201,11 +4809,7 @@
       "auc": 0.869645,
       "converged": true,
       "typical_ci_width": 0.107819,
-      "df_residual": 4,
-      "youden_threshold": 0.19,
-      "youden_sensitivity": 0.767442,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.609547
+      "df_residual": 4
     },
     "suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -5266,11 +4870,7 @@
       "auc": 0.867788,
       "converged": true,
       "typical_ci_width": 0.04753,
-      "df_residual": 4,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.788462,
-      "youden_specificity": 0.8,
-      "youden_index": 0.588462
+      "df_residual": 4
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_violence": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "violence"],
@@ -5346,11 +4946,7 @@
       "auc": 0.905606,
       "converged": true,
       "typical_ci_width": 0.018345,
-      "df_residual": 5,
-      "youden_threshold": 0.25,
-      "youden_sensitivity": 0.728261,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.675629
+      "df_residual": 5
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_gynecological": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "gynecological"],
@@ -5426,11 +5022,7 @@
       "auc": 0.8873,
       "converged": true,
       "typical_ci_width": 0.027398,
-      "df_residual": 5,
-      "youden_threshold": 0.26,
-      "youden_sensitivity": 0.717391,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.66476
+      "df_residual": 5
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "work_disability_months"],
@@ -5506,11 +5098,7 @@
       "auc": 0.911261,
       "converged": true,
       "typical_ci_width": 0.062814,
-      "df_residual": 5,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.802326,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.749694
+      "df_residual": 5
     },
     "antidepressants_depression_benzodiazepines_violence_gynecological": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "violence", "gynecological"],
@@ -5586,11 +5174,7 @@
       "auc": 0.895881,
       "converged": true,
       "typical_ci_width": 0.021715,
-      "df_residual": 5,
-      "youden_threshold": 0.23,
-      "youden_sensitivity": 0.73913,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.686499
+      "df_residual": 5
     },
     "antidepressants_depression_benzodiazepines_violence_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "violence", "work_disability_months"],
@@ -5666,11 +5250,7 @@
       "auc": 0.917993,
       "converged": true,
       "typical_ci_width": 0.054606,
-      "df_residual": 5,
-      "youden_threshold": 0.15,
-      "youden_sensitivity": 0.848837,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.743574
+      "df_residual": 5
     },
     "antidepressants_depression_benzodiazepines_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "gynecological", "work_disability_months"],
@@ -5746,11 +5326,7 @@
       "auc": 0.909425,
       "converged": true,
       "typical_ci_width": 0.057049,
-      "df_residual": 5,
-      "youden_threshold": 0.25,
-      "youden_sensitivity": 0.790698,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.738066
+      "df_residual": 5
     },
     "antidepressants_depression_suicide_attempt_violence_gynecological": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "violence", "gynecological"],
@@ -5826,11 +5402,7 @@
       "auc": 0.902746,
       "converged": true,
       "typical_ci_width": 0.008815,
-      "df_residual": 5,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.804348,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.699085
+      "df_residual": 5
     },
     "antidepressants_depression_suicide_attempt_violence_work_disability_months": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "violence", "work_disability_months"],
@@ -5906,11 +5478,7 @@
       "auc": 0.917993,
       "converged": true,
       "typical_ci_width": 0.049586,
-      "df_residual": 5,
-      "youden_threshold": 0.27,
-      "youden_sensitivity": 0.77907,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.726438
+      "df_residual": 5
     },
     "antidepressants_depression_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -5986,11 +5554,7 @@
       "auc": 0.918605,
       "converged": true,
       "typical_ci_width": 0.032189,
-      "df_residual": 5,
-      "youden_threshold": 0.22,
-      "youden_sensitivity": 0.802326,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.749694
+      "df_residual": 5
     },
     "antidepressants_depression_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "violence", "gynecological", "work_disability_months"],
@@ -6066,11 +5630,7 @@
       "auc": 0.925337,
       "converged": true,
       "typical_ci_width": 0.023369,
-      "df_residual": 5,
-      "youden_threshold": 0.26,
-      "youden_sensitivity": 0.813953,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.761322
+      "df_residual": 5
     },
     "antidepressants_benzodiazepines_suicide_attempt_violence_gynecological": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "violence", "gynecological"],
@@ -6146,11 +5706,7 @@
       "auc": 0.894737,
       "converged": true,
       "typical_ci_width": 0.011513,
-      "df_residual": 5,
-      "youden_threshold": 0.1,
-      "youden_sensitivity": 0.847826,
-      "youden_specificity": 0.842105,
-      "youden_index": 0.689931
+      "df_residual": 5
     },
     "antidepressants_benzodiazepines_suicide_attempt_violence_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "violence", "work_disability_months"],
@@ -6226,11 +5782,7 @@
       "auc": 0.925337,
       "converged": true,
       "typical_ci_width": 0.029161,
-      "df_residual": 5,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.860465,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.807834
+      "df_residual": 5
     },
     "antidepressants_benzodiazepines_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -6306,11 +5858,7 @@
       "auc": 0.913097,
       "converged": true,
       "typical_ci_width": 0.040197,
-      "df_residual": 5,
-      "youden_threshold": 0.16,
-      "youden_sensitivity": 0.883721,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.778458
+      "df_residual": 5
     },
     "antidepressants_benzodiazepines_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "violence", "gynecological", "work_disability_months"],
@@ -6386,11 +5934,7 @@
       "auc": 0.920441,
       "converged": true,
       "typical_ci_width": 0.03607,
-      "df_residual": 5,
-      "youden_threshold": 0.18,
-      "youden_sensitivity": 0.872093,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.76683
+      "df_residual": 5
     },
     "antidepressants_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -6466,11 +6010,7 @@
       "auc": 0.937576,
       "converged": true,
       "typical_ci_width": 0.008549,
-      "df_residual": 5,
-      "youden_threshold": 0.17,
-      "youden_sensitivity": 0.906977,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.801714
+      "df_residual": 5
     },
     "depression_benzodiazepines_suicide_attempt_violence_gynecological": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "violence", "gynecological"],
@@ -6546,11 +6086,7 @@
       "auc": 0.831808,
       "converged": true,
       "typical_ci_width": 0.040236,
-      "df_residual": 5,
-      "youden_threshold": 0.13,
-      "youden_sensitivity": 0.815217,
-      "youden_specificity": 0.736842,
-      "youden_index": 0.552059
+      "df_residual": 5
     },
     "depression_benzodiazepines_suicide_attempt_violence_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "violence", "work_disability_months"],
@@ -6626,11 +6162,7 @@
       "auc": 0.881273,
       "converged": true,
       "typical_ci_width": 0.066604,
-      "df_residual": 5,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.72093,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.668299
+      "df_residual": 5
     },
     "depression_benzodiazepines_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -6706,11 +6238,7 @@
       "auc": 0.849449,
       "converged": true,
       "typical_ci_width": 0.169668,
-      "df_residual": 5,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.697674,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.592411
+      "df_residual": 5
     },
     "depression_benzodiazepines_violence_gynecological_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "violence", "gynecological", "work_disability_months"],
@@ -6786,11 +6314,7 @@
       "auc": 0.880049,
       "converged": true,
       "typical_ci_width": 0.082067,
-      "df_residual": 5,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.732558,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.627295
+      "df_residual": 5
     },
     "depression_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["depression", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -6866,11 +6390,7 @@
       "auc": 0.877404,
       "converged": true,
       "typical_ci_width": 0.041902,
-      "df_residual": 5,
-      "youden_threshold": 0.26,
-      "youden_sensitivity": 0.730769,
-      "youden_specificity": 0.9,
-      "youden_index": 0.630769
+      "df_residual": 5
     },
     "benzodiazepines_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["benzodiazepines", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -6946,11 +6466,7 @@
       "auc": 0.886781,
       "converged": true,
       "typical_ci_width": 0.048196,
-      "df_residual": 5,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.732558,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.679927
+      "df_residual": 5
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_violence_gynecological": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "violence", "gynecological"],
@@ -7043,11 +6559,7 @@
       "auc": 0.912471,
       "converged": true,
       "typical_ci_width": 0.010454,
-      "df_residual": 6,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.76087,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.708238
+      "df_residual": 6
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_violence_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "violence", "work_disability_months"],
@@ -7140,11 +6652,7 @@
       "auc": 0.929009,
       "converged": true,
       "typical_ci_width": 0.027124,
-      "df_residual": 6,
-      "youden_threshold": 0.19,
-      "youden_sensitivity": 0.837209,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.784578
+      "df_residual": 6
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "gynecological", "work_disability_months"],
@@ -7237,11 +6745,7 @@
       "auc": 0.919829,
       "converged": true,
       "typical_ci_width": 0.036394,
-      "df_residual": 6,
-      "youden_threshold": 0.21,
-      "youden_sensitivity": 0.825581,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.77295
+      "df_residual": 6
     },
     "antidepressants_depression_benzodiazepines_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "violence", "gynecological", "work_disability_months"],
@@ -7334,11 +6838,7 @@
       "auc": 0.927785,
       "converged": true,
       "typical_ci_width": 0.027,
-      "df_residual": 6,
-      "youden_threshold": 0.24,
-      "youden_sensitivity": 0.813953,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.761322
+      "df_residual": 6
     },
     "antidepressants_depression_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -7431,11 +6931,7 @@
       "auc": 0.936965,
       "converged": true,
       "typical_ci_width": 0.008966,
-      "df_residual": 6,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.860465,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.807834
+      "df_residual": 6
     },
     "antidepressants_benzodiazepines_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "benzodiazepines", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -7528,11 +7024,7 @@
       "auc": 0.933905,
       "converged": true,
       "typical_ci_width": 0.01048,
-      "df_residual": 6,
-      "youden_threshold": 0.15,
-      "youden_sensitivity": 0.906977,
-      "youden_specificity": 0.894737,
-      "youden_index": 0.801714
+      "df_residual": 6
     },
     "depression_benzodiazepines_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["depression", "benzodiazepines", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -7625,11 +7117,7 @@
       "auc": 0.892289,
       "converged": true,
       "typical_ci_width": 0.047185,
-      "df_residual": 6,
-      "youden_threshold": 0.32,
-      "youden_sensitivity": 0.674419,
-      "youden_specificity": 1,
-      "youden_index": 0.674419
+      "df_residual": 6
     },
     "antidepressants_depression_benzodiazepines_suicide_attempt_violence_gynecological_work_disability_months": {
       "variables": ["antidepressants", "depression", "benzodiazepines", "suicide_attempt", "violence", "gynecological", "work_disability_months"],
@@ -7741,39 +7229,9 @@
       "auc": 0.936965,
       "converged": true,
       "typical_ci_width": 0.010481,
-      "df_residual": 7,
-      "youden_threshold": 0.2,
-      "youden_sensitivity": 0.860465,
-      "youden_specificity": 0.947368,
-      "youden_index": 0.807834
+      "df_residual": 7
     }
   },
-  "interpretation_thresholds": [
-    {
-      "threshold_type": "below_youden",
-      "level": "low",
-      "label_fr": "Suspicion faible",
-      "label_en": "Low suspicion",
-      "recommendation_fr": "Continuer le suivi habituel. Rester attentif aux signaux.",
-      "recommendation_en": "Continue routine follow-up. Stay alert to signals."
-    },
-    {
-      "threshold_type": "at_youden",
-      "level": "moderate",
-      "label_fr": "Suspicion modérée",
-      "label_en": "Moderate suspicion",
-      "recommendation_fr": "Explorer davantage lors des consultations suivantes. Créer un espace de parole sécurisant.",
-      "recommendation_en": "Explore further in subsequent consultations. Create a safe space for discussion."
-    },
-    {
-      "threshold_type": "above_youden",
-      "level": "high",
-      "label_fr": "Suspicion élevée",
-      "label_en": "High suspicion",
-      "recommendation_fr": "Une exploration clinique approfondie est fortement recommandée. Considérer une orientation vers un spécialiste.",
-      "recommendation_en": "In-depth clinical exploration is strongly recommended. Consider referral to a specialist."
-    }
-  ],
   "prevalence_info": {
     "sample_prevalence": 0.849624,
     "sample_n": 133,
@@ -7785,7 +7243,7 @@
   },
   "metadata": {
     "date_created": "2025-12-04",
-    "version": "4.0",
+    "version": "4.1",
     "note": "Includes uncertainty estimates, quality warnings, and prevalence adjustment capability"
   },
   "disclaimer": {
