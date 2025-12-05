@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score de Suspicion d'Abus Sexuels</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            position: relative;
+            text-align: center;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .language-select {
+            padding: 8px 12px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #1f2937;
+        }
+
+        .language-select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .disclaimer {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+            color: #78350f;
+        }
+
+        .disclaimer strong {
+            color: #78350f;
+        }
+
+        .form-section {
+            background: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-section h2 {
+            color: #111827;
+        }
+
+        .form-section > p {
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .form-group:last-child {
+            border-bottom: none;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+
+        .form-group .description {
+            font-size: 0.9em;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .radio-option input[type="radio"] {
+            margin: 0;
+        }
+
+        .numeric-input {
+            width: 150px;
+            padding: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: #ffffff;
+            color: #1f2937;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+            justify-content: center;
+        }
+
+        .button-group.auto-mode {
+            justify-content: flex-end;
+        }
+
+        .button-group.auto-mode button[type="submit"] {
+            display: none;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        button[type="submit"] {
+            background: #2563eb;
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background: #1d4ed8;
+        }
+
+        button[type="button"] {
+            background: #6b7280;
+            color: white;
+        }
+
+        button[type="button"]:hover {
+            background: #4b5563;
+        }
+
+        #results {
+            display: none;
+            margin-top: 5px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .probability-display {
+            text-align: center;
+            padding: 30px;
+            margin: 20px 0;
+            border: 3px solid #e5e7eb;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+
+        .probability-value {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .probability-label {
+            font-size: 1.2em;
+            color: #374151;
+        }
+
+        .interpretation {
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid #e5e7eb;
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        .interpretation h3 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #78350f;
+        }
+
+        .technical-details {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .technical-details summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .technical-details ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        footer {
+            margin-top: 15px;
+            padding-top: 0;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="language-toggle">
+            <select class="language-select" id="language-select">
+                <option value="fr">🇫🇷 Français</option>
+                <option value="en">🇬🇧 English</option>
+            </select>
+        </div>
+        <h1 data-text-fr="Score de Suspicion d'Abus Sexuels" data-text-en="Sexual Abuse Suspicion Score">
+            Score de Suspicion d'Abus Sexuels
+        </h1>
+        <p class="subtitle" data-text-fr="Outil d'aide à la décision clinique" data-text-en="Clinical decision support tool">
+            Outil d'aide à la décision clinique
+        </p>
+    </div>
+
+    <form id="assessment-form">
+        <div class="form-section">
+            <h2 data-text-fr="Informations Cliniques" data-text-en="Clinical Information">Informations Cliniques</h2>
+            <p data-text-fr="Pour chaque critère, sélectionnez « Oui », « Non », ou « Ne sait pas » si l'information n'est pas disponible."
+               data-text-en="For each criterion, select 'Yes', 'No', or 'Don't know' if the information is not available.">
+                Pour chaque critère, sélectionnez « Oui », « Non », ou « Ne sait pas » si l'information n'est pas disponible.
+            </p>
+
+            <!-- Boolean variables -->
+            <div class="form-group">
+                <label data-text-fr="Prise d'antidépresseurs" data-text-en="Taking antidepressants">
+                    Prise d'antidépresseurs
+                </label>
+                <div class="description" data-text-fr="Le patient prend actuellement des antidépresseurs"
+                     data-text-en="Patient is currently taking antidepressants">
+                    Le patient prend actuellement des antidépresseurs
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="antidepressants_yes" name="antidepressants" value="yes">
+                        <label for="antidepressants_yes" data-text-fr="Oui" data-text-en="Yes">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="antidepressants_no" name="antidepressants" value="no">
+                        <label for="antidepressants_no" data-text-fr="Non" data-text-en="No">Non</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="antidepressants_unknown" name="antidepressants" value="unknown" checked>
+                        <label for="antidepressants_unknown" data-text-fr="Ne sait pas" data-text-en="Don't know">Ne sait pas</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label data-text-fr="Diagnostic de dépression" data-text-en="Depression diagnosis">
+                    Diagnostic de dépression
+                </label>
+                <div class="description" data-text-fr="Diagnostic médical de dépression"
+                     data-text-en="Medical diagnosis of depression">
+                    Diagnostic médical de dépression
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="depression_yes" name="depression" value="yes">
+                        <label for="depression_yes" data-text-fr="Oui" data-text-en="Yes">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="depression_no" name="depression" value="no">
+                        <label for="depression_no" data-text-fr="Non" data-text-en="No">Non</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="depression_unknown" name="depression" value="unknown" checked>
+                        <label for="depression_unknown" data-text-fr="Ne sait pas" data-text-en="Don't know">Ne sait pas</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label data-text-fr="Prise de benzodiazépines" data-text-en="Taking benzodiazepines">
+                    Prise de benzodiazépines
+                </label>
+                <div class="description" data-text-fr="Le patient prend actuellement des benzodiazépines (anxiolytiques)"
+                     data-text-en="Patient is currently taking benzodiazepines (anxiolytics)">
+                    Le patient prend actuellement des benzodiazépines (anxiolytiques)
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="benzodiazepines_yes" name="benzodiazepines" value="yes">
+                        <label for="benzodiazepines_yes" data-text-fr="Oui" data-text-en="Yes">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="benzodiazepines_no" name="benzodiazepines" value="no">
+                        <label for="benzodiazepines_no" data-text-fr="Non" data-text-en="No">Non</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="benzodiazepines_unknown" name="benzodiazepines" value="unknown" checked>
+                        <label for="benzodiazepines_unknown" data-text-fr="Ne sait pas" data-text-en="Don't know">Ne sait pas</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label data-text-fr="Antécédents de tentative de suicide" data-text-en="History of suicide attempt">
+                    Antécédents de tentative de suicide
+                </label>
+                <div class="description" data-text-fr="Antécédents documentés de tentative de suicide"
+                     data-text-en="Documented history of suicide attempt">
+                    Antécédents documentés de tentative de suicide
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="suicide_attempt_yes" name="suicide_attempt" value="yes">
+                        <label for="suicide_attempt_yes" data-text-fr="Oui" data-text-en="Yes">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="suicide_attempt_no" name="suicide_attempt" value="no">
+                        <label for="suicide_attempt_no" data-text-fr="Non" data-text-en="No">Non</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="suicide_attempt_unknown" name="suicide_attempt" value="unknown" checked>
+                        <label for="suicide_attempt_unknown" data-text-fr="Ne sait pas" data-text-en="Don't know">Ne sait pas</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label data-text-fr="Exposition à la violence" data-text-en="Exposure to violence">
+                    Exposition à la violence
+                </label>
+                <div class="description" data-text-fr="Exposition à des violences (physiques, psychologiques)"
+                     data-text-en="Exposure to violence (physical, psychological)">
+                    Exposition à des violences (physiques, psychologiques)
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="violence_yes" name="violence" value="yes">
+                        <label for="violence_yes" data-text-fr="Oui" data-text-en="Yes">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="violence_no" name="violence" value="no">
+                        <label for="violence_no" data-text-fr="Non" data-text-en="No">Non</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="violence_unknown" name="violence" value="unknown" checked>
+                        <label for="violence_unknown" data-text-fr="Ne sait pas" data-text-en="Don't know">Ne sait pas</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label data-text-fr="Troubles gynécologiques" data-text-en="Gynecological disorders">
+                    Troubles gynécologiques
+                </label>
+                <div class="description" data-text-fr="Troubles gynécologiques documentés"
+                     data-text-en="Documented gynecological disorders">
+                    Troubles gynécologiques documentés
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="gynecological_yes" name="gynecological" value="yes">
+                        <label for="gynecological_yes" data-text-fr="Oui" data-text-en="Yes">Oui</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="gynecological_no" name="gynecological" value="no">
+                        <label for="gynecological_no" data-text-en="No">Non</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="gynecological_unknown" name="gynecological" value="unknown" checked>
+                        <label for="gynecological_unknown" data-text-fr="Ne sait pas" data-text-en="Don't know">Ne sait pas</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Numeric variable -->
+            <div class="form-group">
+                <label for="work_disability_months"
+                       data-text-fr="Durée d'incapacité de travail (mois)"
+                       data-text-en="Work disability duration (months)">
+                    Durée d'incapacité de travail (mois)
+                </label>
+                <div class="description"
+                     data-text-fr="Nombre de mois d'incapacité de travail (laisser vide si inconnu)"
+                     data-text-en="Number of months of work disability (leave blank if unknown)">
+                    Nombre de mois d'incapacité de travail (laisser vide si inconnu)
+                </div>
+                <input type="number"
+                       id="work_disability_months"
+                       name="work_disability_months"
+                       class="numeric-input"
+                       min="0"
+                       max="120"
+                       step="1"
+                       placeholder="0">
+            </div>
+
+            <div class="form-group">
+                <label for="target_prevalence"
+                       data-text-fr="Taux d'abus attendu dans votre population (%)"
+                       data-text-en="Expected abuse rate in your population (%)">
+                    Taux d'abus attendu dans votre population (%)
+                </label>
+                <div class="description"
+                     data-text-fr="Ajustez selon votre contexte clinique : 10-15% pour dépistage général, 25-35% pour cliniques spécialisées."
+                     data-text-en="Adjust based on your clinical context: 10-15% for general screening, 25-35% for specialized clinics.">
+                    Ajustez selon votre contexte clinique : 10-15% pour dépistage général, 25-35% pour cliniques spécialisées.
+                </div>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <input type="number"
+                           id="target_prevalence"
+                           name="target_prevalence"
+                           class="numeric-input"
+                           min="1"
+                           max="99"
+                           step="1"
+                           value="25"
+                           placeholder="25">
+                    <span style="color: #6b7280; font-weight: 500;">%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" data-text-fr="Calculer le score" data-text-en="Calculate score">
+                Calculer le score
+            </button>
+        </div>
+    </form>
+
+    <div id="results"></div>
+
+    <div class="disclaimer">
+        <strong data-text-fr="⚠️ Avertissement Important" data-text-en="⚠️ Important Warning">
+            ⚠️ Avertissement Important
+        </strong>
+        <p data-text-fr="Ce modèle est basé sur un échantillon limité (n=133) et ne constitue pas un outil diagnostique. Les résultats doivent être interprétés dans le contexte clinique global et ne remplacent pas le jugement médical. L'échantillon présente un déséquilibre important (85% de cas d'abus). Les probabilités prédites sont ajustées pour refléter une prévalence de 25% dans la population cible (modifiable selon votre contexte clinique). Utilisez cet outil comme aide à la décision pour identifier les patients nécessitant une exploration clinique approfondie."
+            data-text-en="This model is based on a limited sample (n=133) and is not a diagnostic tool. Results must be interpreted within the overall clinical context and do not replace medical judgment. The sample shows significant imbalance (85% abuse cases). Predicted probabilities are adjusted to reflect a 25% prevalence in the target population (adjustable based on your clinical context). Use this tool as a decision aid to identify patients requiring in-depth clinical exploration.">
+            Ce modèle est basé sur un échantillon limité (n=133) et ne constitue pas un outil diagnostique.
+            Les résultats doivent être interprétés dans le contexte clinique global et ne remplacent pas le jugement médical.
+            L'échantillon présente un déséquilibre important (85% de cas d'abus).
+            Les probabilités prédites sont ajustées pour refléter une prévalence de 25% dans la population cible (modifiable selon votre contexte clinique).
+            Utilisez cet outil comme aide à la décision pour identifier les patients nécessitant une exploration clinique approfondie.
+        </p>
+    </div>
+
+    <footer>
+        <p>
+            <span data-text-fr="Développé dans le cadre d'une étude sur les comorbidités liées aux abus sexuels"
+                  data-text-en="Developed as part of a study on comorbidities related to sexual abuse">
+                Développé dans le cadre d'une étude sur les comorbidités liées aux abus sexuels
+            </span>
+            •
+            <span data-text-fr="Les résultats ne constituent pas un diagnostic médical"
+                  data-text-en="Results do not constitute a medical diagnosis">
+                Les résultats ne constituent pas un diagnostic médical
+            </span>
+            •
+            <span data-text-fr="Version 2.0"
+                  data-text-en="Version 2.0">
+                Version 2.0
+            </span>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

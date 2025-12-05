@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Test - Sexual Abuse Suspicion Score</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-case {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .test-pass {
+            border-left: 4px solid #22c55e;
+        }
+        .test-fail {
+            border-left: 4px solid #ef4444;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        code {
+            background: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Model Test Suite</h1>
+    <p>This page tests the calculation logic of the sexual abuse suspicion score model.</p>
+
+    <div id="test-results"></div>
+
+    <script>
+        let modelData = null;
+
+        async function loadModel() {
+            const response = await fetch('model.json');
+            modelData = await response.json();
+        }
+
+        function calculateProbability(formData) {
+            const coefficients = modelData.model.coefficients;
+            let linearPredictor = coefficients['(Intercept)'];
+
+            modelData.model.variables.forEach(variable => {
+                const value = formData[variable.id];
+
+                if (value === null || value === undefined) {
+                    return;
+                }
+
+                if (variable.type === 'boolean') {
+                    if (value === true) {
+                        const coeffName = variable.id + 'TRUE';
+                        linearPredictor += coefficients[coeffName];
+                    }
+                } else if (variable.type === 'numeric') {
+                    const numValue = parseFloat(value);
+                    if (!isNaN(numValue)) {
+                        linearPredictor += coefficients[variable.id] * numValue;
+                    }
+                }
+            });
+
+            const probability = 1 / (1 + Math.exp(-linearPredictor));
+            return { probability, linearPredictor };
+        }
+
+        function runTests() {
+            const resultsDiv = document.getElementById('test-results');
+            const testCases = [
+                {
+                    name: "Test Case 1: All negative (baseline)",
+                    input: {
+                        antidepressants: false,
+                        depression: false,
+                        benzodiazepines: false,
+                        suicide_attempt: false,
+                        violence: false,
+                        gynecological: false,
+                        work_disability_months: 0
+                    },
+                    expectedRange: { min: 0, max: 0.2 }
+                },
+                {
+                    name: "Test Case 2: Antidepressants only",
+                    input: {
+                        antidepressants: true,
+                        depression: false,
+                        benzodiazepines: false,
+                        suicide_attempt: false,
+                        violence: false,
+                        gynecological: false,
+                        work_disability_months: 0
+                    },
+                    expectedRange: { min: 0.7, max: 0.95 }
+                },
+                {
+                    name: "Test Case 3: Multiple high-risk factors",
+                    input: {
+                        antidepressants: true,
+                        depression: true,
+                        benzodiazepines: true,
+                        suicide_attempt: true,
+                        violence: false,
+                        gynecological: true,
+                        work_disability_months: 24
+                    },
+                    expectedRange: { min: 0.9, max: 1.0 }
+                },
+                {
+                    name: "Test Case 4: Moderate risk",
+                    input: {
+                        antidepressants: false,
+                        depression: true,
+                        benzodiazepines: true,
+                        suicide_attempt: false,
+                        violence: false,
+                        gynecological: false,
+                        work_disability_months: 6
+                    },
+                    expectedRange: { min: 0.3, max: 0.7 }
+                },
+                {
+                    name: "Test Case 5: With unknown variables",
+                    input: {
+                        antidepressants: true,
+                        depression: null,  // unknown
+                        benzodiazepines: null,  // unknown
+                        suicide_attempt: false,
+                        violence: false,
+                        gynecological: false,
+                        work_disability_months: null  // unknown
+                    },
+                    expectedRange: { min: 0.7, max: 0.95 }
+                },
+                {
+                    name: "Test Case 6: Violence indicator (high weight)",
+                    input: {
+                        antidepressants: false,
+                        depression: false,
+                        benzodiazepines: false,
+                        suicide_attempt: false,
+                        violence: true,
+                        gynecological: false,
+                        work_disability_months: 0
+                    },
+                    expectedRange: { min: 0.95, max: 1.0 }
+                }
+            ];
+
+            let html = '<h2>Test Results</h2>';
+            let passCount = 0;
+            let failCount = 0;
+
+            testCases.forEach((testCase, index) => {
+                const result = calculateProbability(testCase.input);
+                const probability = result.probability;
+                const passed = probability >= testCase.expectedRange.min &&
+                              probability <= testCase.expectedRange.max;
+
+                if (passed) passCount++;
+                else failCount++;
+
+                html += `
+                    <div class="test-case ${passed ? 'test-pass' : 'test-fail'}">
+                        <h3>${testCase.name}</h3>
+                        <p><strong>Input:</strong></p>
+                        <ul>
+                            ${Object.entries(testCase.input).map(([key, value]) =>
+                                `<li><code>${key}</code>: ${value === null ? 'unknown' : value}</li>`
+                            ).join('')}
+                        </ul>
+                        <p class="result">
+                            Probability: ${(probability * 100).toFixed(1)}%<br>
+                            Linear predictor: ${result.linearPredictor.toFixed(4)}<br>
+                            Expected range: ${(testCase.expectedRange.min * 100).toFixed(0)}% - ${(testCase.expectedRange.max * 100).toFixed(0)}%<br>
+                            <strong style="color: ${passed ? '#22c55e' : '#ef4444'}">
+                                ${passed ? '✓ PASS' : '✗ FAIL'}
+                            </strong>
+                        </p>
+                    </div>
+                `;
+            });
+
+            html = `
+                <div style="background: ${failCount === 0 ? '#dcfce7' : '#fee2e2'};
+                            padding: 15px;
+                            border-radius: 5px;
+                            margin-bottom: 20px;">
+                    <h2>Summary</h2>
+                    <p>
+                        <strong>Total tests:</strong> ${testCases.length}<br>
+                        <strong style="color: #22c55e">Passed:</strong> ${passCount}<br>
+                        <strong style="color: #ef4444">Failed:</strong> ${failCount}
+                    </p>
+                </div>
+            ` + html;
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // Run tests when page loads
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadModel();
+            runTests();
+        });
+    </script>
+</body>
+</html>
