@@ -17,7 +17,7 @@ Key features:
 
 ### The Model
 
-This tool uses a comprehensive multi-model system with **a separate logistic regression model for every possible combination of variables**.
+This tool uses a comprehensive multi-model system with **a separate [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) model for every possible combination of variables**.
 
 When you enter information, the system automatically selects the exact model trained on that specific combination of variables. This ensures accurate probability estimates even when some information is missing.
 
@@ -42,16 +42,16 @@ where: z = β₀ + β₁X₁ + β₂X₂ + ... + βₙXₙ
 ```
 
 Performance (best model, all 7 variables):
-- **AUC**: 0.94 (excellent discrimination)
-- **Sensitivity**: 84% (detects ~5 out of 6 cases)
-- **Specificity**: 95% (very few false positives)
+- **[AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve)**: 0.94 (excellent discrimination)
+- **[Sensitivity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Sensitivity)**: 84% (detects ~5 out of 6 cases)
+- **[Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Specificity)**: 95% (very few false positives)
 
 Interpretation thresholds:
 - **< 30%**: Low suspicion → routine follow-up
 - **30-70%**: Moderate suspicion → explore further
 - **≥ 70%**: High suspicion → in-depth exploration recommended
 
-Each prediction includes a **95% confidence interval** calculated using the **delta method**, accounting for prevalence adjustment and coefficient correlations. Quality warnings alert you when uncertainty is high.
+Each prediction includes a **95% [confidence interval](https://en.wikipedia.org/wiki/Confidence_interval)** calculated using the **[delta method](https://en.wikipedia.org/wiki/Delta_method)**, accounting for prevalence adjustment and coefficient correlations. Quality warnings alert you when uncertainty is high.
 
 ## How to Run
 
